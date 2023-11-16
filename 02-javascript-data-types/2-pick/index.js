@@ -6,7 +6,7 @@
  */
 export const pick = (obj, ...fields) => {
     const filteredObject = {}
-    for (let key of fields){
+    for (const key of fields){
         if (key in obj) {
             filteredObject[key] = obj[key]
         }

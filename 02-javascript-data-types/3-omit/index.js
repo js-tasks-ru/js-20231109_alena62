@@ -6,7 +6,7 @@
  */
 export const omit = (obj, ...fields) => {
     const filteredObject = {}
-    for (let key of Object.keys(obj)){
+    for (const key of Object.keys(obj)){
         if (!(fields.includes(key))){
             filteredObject[key] = obj[key]
         }
