@@ -6,18 +6,14 @@
 export function createGetter(path) 
 {
     const pathArr = path.split('.');
-
-    return function(obj)
-    {
-      let value = obj
-      for (const node of pathArr)
-        {
-        value = value[node]
-        if (value == undefined)
-            {
+    return function(obj){
+        let value = obj
+        for (const node of pathArr){
+            value = value[node]
+            if (value == undefined){
                 return;
             }
         }
-      return value    
+        return value    
     }
 };
