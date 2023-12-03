@@ -1,17 +1,16 @@
 export default class ColumnChart{
     _chartHeight = 50;
     _element;
+    
 
-    constructor({data=[], label='',link='', value=0, formatHeading=undefined}= {}){
+    constructor({data=[], label='',link='', value=0, formatHeading = (value) => value}= {}){
         this.data = data
         this.label = label
         this.link = link
-        this.value = value
-        this.formatHeading = formatHeading ?? function(value){return value};
-
+        this.value = formatHeading(value);
         this.render(this.createTemplate());
     }
-
+    
     render(template){
         const element = document.createElement('div');
         element.innerHTML = template;
@@ -50,7 +49,7 @@ export default class ColumnChart{
                     <a href=" ${this.link}" class="column-chart__link">View all</a>
                 </div>
                 <div class="column-chart__container">
-                    <div data-element="header" class="column-chart__header">${this.formatHeading(this.value)}</div>
+                    <div data-element="header" class="column-chart__header">${this.value}</div>
                     <div data-element="body" class="column-chart__chart">${this.createBodyTemplate()}</div>
                 </div>
             </div>
