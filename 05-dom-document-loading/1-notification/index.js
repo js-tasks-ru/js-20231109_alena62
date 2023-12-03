@@ -15,7 +15,17 @@ export default class NotificationMessage {
         return element.firstElementChild;
     }
 
+
+    checkNotification = () => {
+        if (NotificationMessage.lastShownNotification) {
+          NotificationMessage.lastShownNotification.destroy();
+        }
+        NotificationMessage.lastShownNotification = this;
+      }
+
+
     show(targetTag = document.body){
+        this.checkNotification();
         targetTag.append(this.element)
         this.timeoutId= setTimeout(this.remove, this.duration);
 
